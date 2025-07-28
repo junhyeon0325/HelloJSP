@@ -51,7 +51,8 @@ public class BoardServlet extends HttpServlet {
 			html += "<tr><th>작성자</th><td colspan='3'>" + board.getWriter() + "</td></tr>";
 			html += "<tr><th>작성일시</th><td colspan='3'>" + board.getCreationDate() + "</td></tr>";
 			html += "</table>";
-
+				
+			// 글삭제
 			html += "<div><a href='DeleteBoard?board_no=" + board.getBoardNo() + "'>글삭제</a></div>";
 			html += "<div><a href='BoardListServlet'>글목록이동</a></div>";
 

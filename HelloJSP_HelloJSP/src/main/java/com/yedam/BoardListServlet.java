@@ -28,7 +28,8 @@ public class BoardListServlet extends HttpServlet {
 	) throws ServletException, IOException {
 		// 글목록 출력.
 		response.setContentType("text/html;charset=utf-8"); // 웹브라우저의 컨텐츠타입.
-		System.out.println("Hello Servlet !!!");
+		System.out.println("Hello Servlet !!!, doGet메소드 호출");
+		
 		PrintWriter out = response.getWriter(); // stream
 		out.println("<b>Hello, Servlet</b>");
 
@@ -50,6 +51,7 @@ public class BoardListServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("doPost메소드 호출");
 		doGet(request, response);
 	}
 

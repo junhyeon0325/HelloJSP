@@ -18,9 +18,9 @@
 	
 	<update id="updateCount" parameterType="int">
 	  update tbl_board
-	  set view_cnt = view_cnt + 1,
-	      last_update_date = sysdate
-	  where board_no = #{boardNo}
+	  set    view_cnt = view_cnt + 1,
+	         last_update_date = sysdate
+	  where  board_no = #{boardNo}
 	</update>
 	
 	<!-- insert. -->
