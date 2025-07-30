@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.ModifyBoardControl;
+import com.yedam.control.ModifyFormControl;
 import com.yedam.control.RegisterControl;
 
 // init - service - detory
@@ -31,10 +33,13 @@ public class FrontController extends HttpServlet{
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		map.put("/boardList.do", new BoardListControl());
-		map.put("/board.do", new BoardControl());
+		
+		map.put("/boardList.do", new BoardListControl());	// 글목록
+		map.put("/board.do", new BoardControl());	// 상세화면
 		map.put("/register.do", new RegisterControl());	// 등록화면
 		map.put("/addBoard.do", new AddBoardControl());	// 등록처리
+		map.put("/modifyForm.do", new ModifyFormControl());	// 수정화면
+		map.put("/modifyBoard.do", new ModifyBoardControl()); // 수정처리
 	}
 	
 	@Override
@@ -44,10 +49,10 @@ public class FrontController extends HttpServlet{
 		// /HelloJSP/boardList.do					   => uri
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();	//	/HelloJSP
-		String page = uri.substring(context.length());	//	 /boardList.do
+		String page = uri.substring(context.length());	//	 /boardList.do 등
 		
-		Control control = map.get(page);
-		control.execute(req, resp);
+		Control control = map.get(page);	// 페이지를 넣으면 메소드를 반환해주는 get이 해줌
+		control.execute(req, resp);		// 안에 execute가 무조건 있으니까 무조건 반환해준거
 	}
 	
 	
