@@ -1,3 +1,6 @@
+select *
+from   tbl_member;
+
 -- 사용자 테이블
 -- 아이디, 비밀번호, 이름, 권한
 create table tbl_member (

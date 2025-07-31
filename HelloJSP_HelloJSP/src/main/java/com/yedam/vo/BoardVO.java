@@ -14,5 +14,5 @@ public class BoardVO {
 	private int viewCnt;
 	private Date creationDate;
 	private Date lastUpdateDate;
-	private String page;
+	
 }

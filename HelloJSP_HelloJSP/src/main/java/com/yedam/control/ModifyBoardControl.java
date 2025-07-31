@@ -28,7 +28,7 @@ public class ModifyBoardControl implements Control {
 		param.setBoardNo(Integer.parseInt(bno));
 		param.setTitle(title);
 		param.setContent(content);
-		param.setPage(page);
+		
 		
 		
 		BoardService svc = new BoardServiceImpl();
