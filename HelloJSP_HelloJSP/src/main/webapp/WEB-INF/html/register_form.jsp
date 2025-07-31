@@ -3,8 +3,10 @@
 
 <!-- 액션태그 jsp:include 마지막에 /를 하면 한꺼번에 할 수 있음 -->
 <jsp:include page="includes/header.jsp" />
-<h3>register_form.jsp</h3>
+<h3>게시글작성(register_form.jsp)</h3>
+
 <form action='addBoard.do' method='post'>
+	<input type="hidden" required name="writer" value="${logId }" class='form-control'>
 	<table class='table'>
 		<tr>
 			<th>제목</th>
@@ -12,7 +14,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" required name="writer" class='form-control'></td>
+			<td>${logId }</td>
 		</tr>
 		<tr>
 			<th>내용</th>

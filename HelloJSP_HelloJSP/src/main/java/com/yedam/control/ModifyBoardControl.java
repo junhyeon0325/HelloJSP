@@ -16,22 +16,25 @@ public class ModifyBoardControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		req.setCharacterEncoding("utf-8");
+//		req.setCharacterEncoding("utf-8");
 		
 		// 파라미터
 		String bno = req.getParameter("bno");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		String page = req.getParameter("page");
 		
 		BoardVO param = new BoardVO();
 		param.setBoardNo(Integer.parseInt(bno));
 		param.setTitle(title);
 		param.setContent(content);
+		param.setPage(page);
+		
 		
 		BoardService svc = new BoardServiceImpl();
 		if (svc.modifyBoard(param)) {
 			// 목록이동
-			resp.sendRedirect("boardList.do");
+			resp.sendRedirect("boardList.do?page="+page);
 		} else {
 			System.out.println("에러발생.");
 		}

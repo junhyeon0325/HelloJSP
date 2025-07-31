@@ -13,9 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.LoginControl;
+import com.yedam.control.LoginFormControl;
+import com.yedam.control.LogoutControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.ModifyFormControl;
 import com.yedam.control.RegisterControl;
+import com.yedam.control.SignFormControl;
+import com.yedam.control.SignUpControl;
 
 // init - service - detory
 // *.do 로 끝나는 패턴은 다 현재파일 서블릿을 실행되도록 -> 실행할 컨트롤.(조금있다가 컨트롤이라고 쓴이유에대해서)
@@ -40,6 +45,12 @@ public class FrontController extends HttpServlet{
 		map.put("/addBoard.do", new AddBoardControl());	// 등록처리
 		map.put("/modifyForm.do", new ModifyFormControl());	// 수정화면
 		map.put("/modifyBoard.do", new ModifyBoardControl()); // 수정처리
+		// 회원관련
+		map.put("/signForm.do", new SignFormControl());	// 회원가입화면
+		map.put("/signup.do", new SignUpControl());	// 회원가입처리
+		map.put("/loginForm.do", new LoginFormControl());	// 로그인 화면
+		map.put("/login.do", new LoginControl());	// 로그인 처리
+		map.put("/logout.do", new LogoutControl());	// 로그아웃.
 	}
 	
 	@Override

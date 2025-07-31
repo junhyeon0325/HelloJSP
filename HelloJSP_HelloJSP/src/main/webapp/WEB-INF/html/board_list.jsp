@@ -44,7 +44,7 @@
 			<%-- board_list에서 board값을 가져오는거 --%>
 			<tr>
 				<td><c:out value="${board.boardNo }" /></td>
-				<td><a href='board.do?bno=${board.boardNo }'>${board.title }</a></td>
+				<td><a href='board.do?bno=${board.boardNo }&page=${page }'>${board.title }</a></td>
 				<td><c:out value="${board.writer }" /></td>
 				<td><c:out value="${board.viewCnt }" /></td>
 			</tr>
@@ -74,8 +74,7 @@
 						class="page-link">${p }</span></li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item"><a class="page-link"
-						href="boardList.do?searchCondition=${searchCondition }&keyword=${keyword }&page=${p }">${p }</a></li>
+					<li class="page-item"><a class="page-link" href="boardList.do?searchCondition=${searchCondition }&keyword=${keyword }&page=${p }">${p }</a></li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>

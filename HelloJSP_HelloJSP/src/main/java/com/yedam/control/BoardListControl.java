@@ -25,6 +25,8 @@ public class BoardListControl implements Control{
 		String sc = req.getParameter("searchCondition");
 		String kw = req.getParameter("keyword");
 		
+		
+		
 		page = page == null ? "1" : page;
 		
 		// SearchDTO (메소드에 전달할 파라미터)
@@ -46,6 +48,7 @@ public class BoardListControl implements Control{
 		req.setAttribute("paging", paging);
 		req.setAttribute("searchCondition", sc);
 		req.setAttribute("keyword", kw);
+		req.setAttribute("page", page);
 		
 		// 요청재지정
 		req.getRequestDispatcher("WEB-INF/html/board_list.jsp").forward(req, resp);		// 전달하는데 forward라는 메소드를 호출하고 실제 페이지가 열린다 거기에 req resp를 전달
