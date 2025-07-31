@@ -1,3 +1,16 @@
+select   member_name, b.*
+from     tbl_board b
+join     tbl_member m
+  on     b.writer = m.member_id
+order by 1;
+
+select *
+from   tbl_board;
+
+update tbl_board
+set    writer = 'user02'
+where  board_no < 100;
+
 select *
 from   tbl_member;
 
