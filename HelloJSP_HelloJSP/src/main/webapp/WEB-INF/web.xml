@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>HelloJSP</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>HelloJSP</display-name>
 
-	<!-- 서블릿 등록. 2가지 세팅을해야한다-->
+	<listener>
+		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 서블릿 등록. 2가지 세팅을해야한다 -->
 	<servlet>
 		<servlet-name>front</servlet-name>
-		<servlet-class>com.yedam.common.FrontController</servlet-class>		
+		<servlet-class>com.yedam.common.FrontController</servlet-class>
 	</servlet>
-	<!-- *.do로 끝나는 요청은 front로 실행하겠습니다 front는 com.yedam.common.FrontController로 연결 -->
+	<!-- *.do로 끝나는 요청은 front로 실행하겠습니다 front는 com.yedam.common.FrontController로 
+		연결 -->
 	<servlet-mapping>
 		<servlet-name>front</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>

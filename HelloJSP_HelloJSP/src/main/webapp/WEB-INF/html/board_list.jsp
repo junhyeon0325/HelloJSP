@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<jsp:include page="includes/header.jsp" />
+
+
 
 <%-- <p>${board_list }</p>
 <p>${paging }</p>--%>
@@ -44,7 +45,7 @@
 			<%-- board_list에서 board값을 가져오는거 --%>
 			<tr>
 				<td><c:out value="${board.boardNo }" /></td>
-				<td><a href='board.do?bno=${board.boardNo }&page=${page }'>${board.title }</a></td>
+				<td><a href='board.do?bno=${board.boardNo }&page=${paging.currPage }'>${board.title }</a></td>
 				<td><c:out value="${board.writer }" /></td>
 				<td><c:out value="${board.viewCnt }" /></td>
 			</tr>
@@ -91,4 +92,3 @@
 		</c:choose>
 	</ul>
 </nav>
-<jsp:include page="includes/footer.jsp" />

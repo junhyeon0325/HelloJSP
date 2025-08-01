@@ -15,7 +15,7 @@ public class BoardControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// parameter(?bno=3)
+		// parameter(?bno=3) -> ?bno=20&page=4
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
 		
@@ -28,7 +28,7 @@ public class BoardControl implements Control {
 		req.setAttribute("page", page);
 		
 		// 요청재지정
-		req.getRequestDispatcher("WEB-INF/html/board.jsp").forward(req, resp);
+		req.getRequestDispatcher("user/board.tiles").forward(req, resp);
 	}
 
 }

@@ -5,7 +5,9 @@
 <configuration>
   <settings>
     <setting name="mapUnderscoreToCamelCase" value="true"/>
+    <setting name="jdbcTypeForNull" value="NULL"/>
   </settings>
+  
   <!-- 데이터타입 별칭. -->
   <typeAliases>
     <typeAlias alias="board" type="com.yedam.vo.BoardVO"/>

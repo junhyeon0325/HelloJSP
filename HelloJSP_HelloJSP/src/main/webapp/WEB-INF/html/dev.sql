@@ -1,3 +1,17 @@
+-- 0801
+alter table tbl_board add image varchar2(100);
+
+select *
+from   tbl_board
+order by board_no;
+
+select *
+from   tbl_member;
+
+insert into tbl_member (member_id, member_pw, member_name, responsibility)
+values('guest', '1111', '±è°ü¸®', 'Admin');
+
+-- 0731
 select   member_name, b.*
 from     tbl_board b
 join     tbl_member m

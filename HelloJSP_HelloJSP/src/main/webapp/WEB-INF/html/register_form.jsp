@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
+
 <!-- 액션태그 jsp:include 마지막에 /를 하면 한꺼번에 할 수 있음 -->
-<jsp:include page="includes/header.jsp" />
 <h3>게시글작성(register_form.jsp)</h3>
 
-<form action='addBoard.do' method='post'>
+<form action='addBoard.do' method='post' enctype="multipart/form-data">
 	<input type="hidden" required name="writer" value="${logId }" class='form-control'>
 	<table class='table'>
 		<tr>
@@ -21,6 +22,10 @@
 			<td><textarea required name="content" class='form-control'></textarea></td>
 		</tr>
 		<tr>
+			<th>이미지</th>
+			<td><input type="file" name="images" class='form-control'></td>
+		</tr>
+		<tr>
 			<td colspan='2' align='center'><input type="submit"
 				class='btn btn-primary'></td>
 		</tr>
@@ -28,4 +33,3 @@
 </form>
 
 
-<jsp:include page="includes/footer.jsp" />

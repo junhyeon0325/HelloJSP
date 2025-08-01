@@ -5,7 +5,6 @@
 <%-- 이걸 해줘야 c를 써서 out을 호출해서 쓸수있음 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="includes/header.jsp" />
 
 <h3>글수정화면(modify_board.jsp)</h3>
 <form action="modifyBoard.do">
@@ -42,4 +41,3 @@
 	</table>
 </form>
 
-<jsp:include page="includes/footer.jsp" />

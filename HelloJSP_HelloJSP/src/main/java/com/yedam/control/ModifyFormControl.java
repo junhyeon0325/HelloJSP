@@ -16,7 +16,7 @@ public class ModifyFormControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 수정화면. bno=3
+		// 수정화면. bno=3 -> modifyForm.do?bno=20&page=4
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
 
@@ -35,7 +35,8 @@ public class ModifyFormControl implements Control {
 			req.setAttribute("page", page);
 			
 			// 요청재지정
-			req.getRequestDispatcher("WEB-INF/html/modify_board.jsp").forward(req, resp);
+			req.getRequestDispatcher("user/modify_board.tiles").forward(req, resp);
+//			req.getRequestDispatcher("user/modify_board.tiles").forward(req, resp);
 			
 		} else {
 		
@@ -47,7 +48,8 @@ public class ModifyFormControl implements Control {
 			req.setAttribute("msg", "권한이 없습니다.");
 			
 			// 요청재지정
-			req.getRequestDispatcher("WEB-INF/html/board.jsp").forward(req, resp);
+			req.getRequestDispatcher("user/board.tiles").forward(req, resp);
+//			req.getRequestDispatcher("WEB-INF/html/board.jsp").forward(req, resp);
 			
 		}
 	}

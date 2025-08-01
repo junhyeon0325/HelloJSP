@@ -31,6 +31,7 @@ public class LoginControl implements Control {
 			// 정상 id, pw 입력
 			HttpSession session = req.getSession();	// 쿠키정보를 확인해서 웹 브라우저를 통해서 했구나, 
 			session.setAttribute("logId", id);	// 속성(logId)=로그인아이디.
+			session.setAttribute("auth", member.getResponsibility());	// User/Admin
 			resp.sendRedirect("boardList.do");
 		}
 	}

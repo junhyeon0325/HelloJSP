@@ -19,5 +19,4 @@ public class LogoutControl implements Control {
 		
 		resp.sendRedirect("boardList.do");
 	}
-
 }

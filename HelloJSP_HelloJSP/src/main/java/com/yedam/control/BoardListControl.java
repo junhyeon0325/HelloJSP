@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 import com.yedam.common.PageDTO;
@@ -24,8 +25,6 @@ public class BoardListControl implements Control{
 		String page = req.getParameter("page");
 		String sc = req.getParameter("searchCondition");
 		String kw = req.getParameter("keyword");
-		
-		
 		
 		page = page == null ? "1" : page;
 		
@@ -48,10 +47,26 @@ public class BoardListControl implements Control{
 		req.setAttribute("paging", paging);
 		req.setAttribute("searchCondition", sc);
 		req.setAttribute("keyword", kw);
-		req.setAttribute("page", page);
 		
-		// 요청재지정
-		req.getRequestDispatcher("WEB-INF/html/board_list.jsp").forward(req, resp);		// 전달하는데 forward라는 메소드를 호출하고 실제 페이지가 열린다 거기에 req resp를 전달
+		// 권한에 따라 템플릿적용.
+		HttpSession session = req.getSession();
+		
+		String authority = (String) session.getAttribute("auth");
+		
+		if(authority == null) {
+			req.getRequestDispatcher("user/board_list.tiles").forward(req, resp);
+			return;
+		}
+		System.out.println(authority);
+		
+		if(authority.equals("User")) {
+			// 요청재지정
+			req.getRequestDispatcher("user/board_list.tiles").forward(req, resp);		// 전달하는데 forward라는 메소드를 호출하고 실제 페이지가 열린다 거기에 req resp를 전달
+		} else if(authority.equals("Admin")) {
+			// 요청재지정
+			req.getRequestDispatcher("manager/board_list.tiles").forward(req, resp);		// 전달하는데 forward라는 메소드를 호출하고 실제 페이지가 열린다 거기에 req resp를 전달
+		}
+			
 	}
 	
 }

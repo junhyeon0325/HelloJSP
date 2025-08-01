@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	<%-- 이걸 해줘야 c를 써서 out을 호출해서 쓸수있음 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<jsp:include page="includes/header.jsp" />
 
 <h3>글상세화면(board.jsp)</h3>
 <!-- msg 전달값이 있으면 메세지 출력. -->
@@ -24,11 +23,23 @@
 	</tr>
 	<tr>
 		<th>제목</th>
-		<td colspan='3'><c:out value="${board_info.title }" /></td>
+		<td colspan='2'>
+			<c:out value="${board_info.title }" />
+		</td>
+		<td rowspan='2'>
+			<c:choose>
+				<c:when test="${!empty board_info.image }">
+			    	<img width="150px" src='upload/${board_info.image }'>
+				</c:when> 
+				<c:otherwise>
+			   		<img width="150px" src='https://dummyimage.com/100x100/91ff9c/ffffff&text=No'>
+				</c:otherwise>
+			</c:choose>
+		</td>
 	</tr>
 	<tr>
 		<th>내용</th>
-		<td colspan='3'><c:out value="${board_info.content}" /></td>
+		<td colspan='2'><c:out value="${board_info.content}" /></td>
 	</tr>
 	<tr>
 		<th>작성자</th>
@@ -45,4 +56,3 @@
 </table>
 </form>
 
-<jsp:include page="includes/footer.jsp" />
