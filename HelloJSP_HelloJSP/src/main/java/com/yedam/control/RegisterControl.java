@@ -17,7 +17,7 @@ public class RegisterControl implements Control {
 		// 페이지를 요청하면 html페이지를 보여주세요 getrequestdispatcher메소드임
 		
 			// 요청재지정. 제일 상의 경로가 web-inf라서 시작임
-			req.getRequestDispatcher("WEB-INF/html/register_form.jsp").forward(req, resp);
+			req.getRequestDispatcher("user/register_form.tiles").forward(req, resp);
 		
 	}
 

@@ -17,4 +17,9 @@
     and    member_pw = #{pw}
   </select>
   
+  <select id="getAllSelectMembers" resultType="member">
+    select *
+    from   tbl_member
+  </select>
+  
 </mapper>
