@@ -8,22 +8,22 @@
 </head>
 <body>
 	<h3>JS연습</h3>
-	<div style="display: none;">
+	<div>
 		ID: <input type="text" id="mid"><br>
 		Name: <input type="text" id="mname"><br>
 		Point: <input type="number" id="point"><br>
 		<button id="addBtn">추가</button>
 	</div>
-	<div style="display: none;">
+	<div>
 		<ul id="list"></ul>
 	</div>
 	
-	<div>
+	<div  style="display: none;">
 		이름: <input type="text" id="std_name"><br>
 		영어: <input type="number" id="std_score"><br>
 		<button id="addList">추가</button>
 	</div>
-	<div>
+	<div style="display: none;">
 		<table border="2">
 			<thead>
 				<tr>
@@ -35,6 +35,6 @@
 			</tbody>
 		</table>
 	</div>
-	<script type="text/javascript" src='js/data.js'></script>
+	<script type="text/javascript" src='js/string.js'></script>
 </body>
 </html>

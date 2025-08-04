@@ -2,15 +2,15 @@
  * 
  */
 const fruits = ['apple','banana','cherry']; // new Array();
-fruits[3] = 'orange';
+fruits[3] = 'orange';	// [apple, banana, cherry, orange]
 
 // 추가, 삭제
-fruits.push('melon');
-fruits.unshift('mango');	// 가장 앞쪽에 추가하는 unshift
-fruits.pop();	// melon제거, 가장 마지막부터 제거함
-fruits.pop();	// orange제거
-fruits.shift();		// mango제거
-fruits.shift();		// apple제거
+fruits.push('melon');	// [apple, banana, cherry, orange, melon]
+fruits.unshift('mango');	// 가장 앞쪽에 추가하는 unshift [mango, apple, banana, cherry, orange, melon]
+fruits.pop();	// melon제거, 가장 마지막부터 제거함 [mango, apple, banana, cherry, orange]
+fruits.pop();	// orange제거 [mango, apple, banana, cherry]
+fruits.shift();		// mango제거 [apple, banana, cherry]
+fruits.shift();		// apple제거 [banana, cherry]
 
 for (let fruit of fruits){	// 반복문 fruits배열에 있는 과일들을 fruit에 넣어서 하나하나 출력
 	console.log(fruit);
@@ -29,7 +29,7 @@ for(let i = 0; i < members.length; i++) {
 // 화면에 배열의 갯수만큼 회원정보를 출력하는 함수
 function showList() {
 	// 반복문. forEach
-	members.forEach( (elem, idx, ary) => {	// function없애고 화살표 함수로 바꿈
+	members.forEach( elem => {	// function없애고 화살표 함수로 바꿈
 		let str = `<li>아이디: ${elem.id}, 이름: ${elem.name}, 포인트: ${elem.point}</li>`;
 		// ul 요소
 		document.querySelector('#list').innerHTML += str;

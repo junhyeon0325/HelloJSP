@@ -23,7 +23,6 @@ public class MemberListControl implements Control {
 		String page = req.getParameter("page");
 		String sc = req.getParameter("searchCondition");
 		String kw = req.getParameter("keyword");
-		
 		page = page == null ? "1" : page;
 		
 		// SearchDTO (메소드에 전달할 파라미터)
@@ -31,13 +30,13 @@ public class MemberListControl implements Control {
 		search.setPage(Integer.parseInt(page));
 		search.setSearchCondition(sc);
 		search.setKeyword(kw);
-		
+
 		MemberService svc = new MemberServiceImpl();
-		List<MemberVO> list = svc.getAllMembers();
+		List<MemberVO> list = svc.memberList(search);
 		
 		int totlaCnt = svc.totalCount(search);
 		PageDTO paging = new PageDTO(Integer.parseInt(page), totlaCnt);
-				
+
 		req.setAttribute("member_list", list);
 		req.setAttribute("paging", paging);
 		req.setAttribute("searchCondition", sc);

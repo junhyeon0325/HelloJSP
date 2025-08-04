@@ -9,6 +9,6 @@ import com.yedam.vo.MemberVO;
 public interface MemberService {
 	public boolean addMember(MemberVO member);		// 회원추가
 	public MemberVO userCheck(String id, String pw);// 회원확인
-	public List<MemberVO> getAllMembers();					// 회원조회
+	public List<MemberVO> memberList(SearchDTO search);					// 회원조회
 	public int totalCount(SearchDTO search);	// 회원 전체인원
 }

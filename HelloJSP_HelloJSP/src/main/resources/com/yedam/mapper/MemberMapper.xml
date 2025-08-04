@@ -17,9 +17,52 @@
     and    member_pw = #{pw}
   </select>
   
-  <select id="getAllSelectMembers" resultType="member">
-    select *
-    from   tbl_member
-  </select>
+  <select id="selectMemberList" resultType="member" parameterType="search">
+    <!-- select *
+    from tbl_member 
+    select /*+ INDEX_DESC(b SYS_C008408) */ rownum rn, b.*-->
+    
+	select ta.*
+	from   (select /*+ INDEX_DESC(b SYS_C008408) */ rownum rn, b.*
+	        from tbl_member b
+	        <where>
+				<if
+					test="searchCondition != null and searchCondition == 'T'.toString() ">
+					member_id like '%'||#{keyword}||'%'
+				</if>
+				<if
+					test="searchCondition != null and searchCondition == 'W'.toString() ">
+					member_name like '%'||#{keyword}||'%'
+				</if>
+				<if
+					test="searchCondition != null and searchCondition == 'TW'.toString() ">
+					member_name like '%'||#{keyword}||'%' or member_id like '%'||#{keyword}||'%'
+				</if>
+			</where>
+	       ) ta
+	 where ta.rn > (#{page} - 1) * 5
+	 <![CDATA[
+	 and   ta.rn <= #{page} * 5
+	 ]]>
+  </select> 
+  
+  <select id="selectMemberCount" resultType="int">
+		select count(1)
+		from tbl_member
+		<where>
+			<if
+				test="searchCondition != null and searchCondition == 'T'.toString() ">
+				member_id like '%'||#{keyword}||'%'
+			</if>
+			<if
+				test="searchCondition != null and searchCondition == 'W'.toString() ">
+				member_name like '%'||#{keyword}||'%'
+			</if>
+			<if
+				test="searchCondition != null and searchCondition == 'TW'.toString() ">
+				member_name like '%'||#{keyword}||'%' or member_id like '%'||#{keyword}||'%'
+			</if>
+		</where>
+	</select>
   
 </mapper>

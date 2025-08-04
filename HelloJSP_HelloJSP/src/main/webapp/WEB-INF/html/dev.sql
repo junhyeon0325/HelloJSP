@@ -1,3 +1,36 @@
+-- 0804
+SELECT ta.*
+FROM (
+    SELECT rownum rn, b.*
+    FROM tbl_member b
+    WHERE member_name LIKE '%user%' OR member_id LIKE '%user%'
+) ta
+WHERE ta.rn > (1 - 1) * 5
+  AND ta.rn <= 1 * 5;
+  
+select ta.*
+from   (
+        select rownum rn, c.*
+        from tbl_member c
+        where member_id like '%user%'
+           or member_name like '%user%'
+           or member_name like '%user%' or member_id like '%user%'
+       ) ta
+ where ta.rn > (2 - 1) * 5
+ and   ta.rn <= 2 * 5;
+
+  	 
+
+alter table tbl_member add constraint pk_member primary key(member_id);
+
+select index_name, table_name
+from user_indexes
+where table_name = upper('tbl_member');
+
+select index_name, table_name
+from user_indexes
+where table_name = upper('tbl_board');
+
 -- 0801
 alter table tbl_board add image varchar2(100);
 
@@ -9,7 +42,7 @@ select *
 from   tbl_member;
 
 insert into tbl_member (member_id, member_pw, member_name, responsibility)
-values('guest', '1111', '辫包府', 'Admin');
+values('guest3', '1111', '伙包府', 'Admin');
 
 -- 0731
 select   member_name, b.*
@@ -53,6 +86,7 @@ create table tbl_board (
   creation_date date default sysdate, -- ?嵃?澊?劙 ?儩?劚 ?嫓?爯
   last_update_date date default sysdate -- ?垬?爼?嫓?爯 ???灔
 );
+
 alter table tbl_board add constraint pk_board primary key(board_no);
 create sequence board_seq;
 

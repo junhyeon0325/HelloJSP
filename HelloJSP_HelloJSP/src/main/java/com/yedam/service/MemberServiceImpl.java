@@ -30,14 +30,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<MemberVO> getAllMembers() {
-		return mapper.getAllSelectMembers();
+	public List<MemberVO> memberList(SearchDTO search) {
+		return mapper.selectMemberList(search);
 	}
 	
 	@Override
 	public int totalCount(SearchDTO search) {
-		
-		return 0;
+		return mapper.selectMemberCount(search);
 	}
 	
 }

@@ -6,7 +6,7 @@ const students = [];
 students.push({sname: "홍길동", score: 90});
 
 function showList() {
-	students.forEach( (elem, idx, ary) => {
+	students.forEach( elem => {
 		let str = `<tr><td>${elem.sname}</td><td>${elem.score}</td></tr>`;
 		document.querySelector('#tlist').innerHTML += str;
 	});

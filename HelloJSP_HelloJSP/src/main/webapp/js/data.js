@@ -24,7 +24,7 @@ let students = [{ name: "Hong", age: 20}, {name: "Choi", age: 21}];
 //				[{"name":"Hong","age":20},{"name":"Choi","age":21}] 요런형태로 바꿔줌 잘보면 name하고 age가 문자열로 바뀜
 // 객체 -> JSON.stringify() -> json문자열
 let json = JSON.stringify(students);
-//console.log(json);
+console.log(json); 
 
 // 반복문(forEach) => 성별:Female 급여: 6000 이상인 사람을 출력.
 

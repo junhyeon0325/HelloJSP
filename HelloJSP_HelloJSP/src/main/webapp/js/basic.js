@@ -1,5 +1,5 @@
 /**
- * 
+ * basic.js
  */
 
 console.log("basic");
@@ -16,7 +16,7 @@ const age = 20;		// 상수
 //age = 30;
 
 // Object 타입 선언
-const obj = new Object();	// {}
+const obj = new Object();
 obj.name = 'Hong';	// name속성
 obj.age = 20;	// age속성
 obj.info = function () {
