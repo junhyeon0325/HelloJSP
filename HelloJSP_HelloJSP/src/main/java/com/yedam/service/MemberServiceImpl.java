@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DBUtil;
+import com.yedam.common.SearchDTO;
 import com.yedam.mapper.MemberMapper;
 import com.yedam.vo.MemberVO;
 
@@ -31,6 +32,12 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public List<MemberVO> getAllMembers() {
 		return mapper.getAllSelectMembers();
+	}
+	
+	@Override
+	public int totalCount(SearchDTO search) {
+		
+		return 0;
 	}
 	
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.JSControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
 import com.yedam.control.LogoutControl;
@@ -46,6 +47,7 @@ public class FrontController extends HttpServlet{
 		map.put("/addBoard.do", new AddBoardControl());	// 등록처리
 		map.put("/modifyForm.do", new ModifyFormControl());	// 수정화면
 		map.put("/modifyBoard.do", new ModifyBoardControl()); // 수정처리
+		
 		// 회원관련
 		map.put("/signForm.do", new SignFormControl());	// 회원가입화면
 		map.put("/signup.do", new SignUpControl());	// 회원가입처리
@@ -53,6 +55,9 @@ public class FrontController extends HttpServlet{
 		map.put("/login.do", new LoginControl());	// 로그인 처리
 		map.put("/logout.do", new LogoutControl());	// 로그아웃.
 		map.put("/memberList.do", new MemberListControl());	// 회원목록
+		
+		// 기타
+		map.put("/js.do", new JSControl());		// 자바스크립트 연습
 	}
 	
 	@Override
