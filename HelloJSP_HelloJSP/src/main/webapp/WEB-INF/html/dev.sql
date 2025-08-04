@@ -19,14 +19,14 @@ from   (
  where ta.rn > (2 - 1) * 5
  and   ta.rn <= 2 * 5;
 
-  	 
-
 alter table tbl_member add constraint pk_member primary key(member_id);
 
+-- index_name조회 SYS_C008408
 select index_name, table_name
 from user_indexes
-where table_name = upper('tbl_member');
+where table_name = upper('tbl_member'); 
 
+-- index_name조회 pk_board
 select index_name, table_name
 from user_indexes
 where table_name = upper('tbl_board');
