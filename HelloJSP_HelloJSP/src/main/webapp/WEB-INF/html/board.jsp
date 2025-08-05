@@ -56,3 +56,9 @@
 </table>
 </form>
 
+<!-- 댓글 -->
+
+
+
+
+<script srt="js/board.js"></script>

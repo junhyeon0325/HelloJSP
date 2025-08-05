@@ -1,4 +1,31 @@
--- 0804
+--0805
+-- 댓글테이블(댓글번호, 원본글번호, 내용, 댓글작성자, 작성일시)
+create table tbl_reply (
+  reply_no   number,
+  board_no   number not null,
+  reply      varchar2(500) not null,
+  replyer    varchar2(10) not null,
+  reply_date date default sysdate
+);
+create sequence reply_seq;
+alter table    tbl_reply 
+add constraint pk_reply 
+primary key   (reply_no);
+
+drop table tbl_deply;
+
+insert into tbl_reply (reply_no, board_no, reply, replyer)
+values(reply_seq.nextval, 123, '123번의 댓글입니다', 'user01');
+insert into tbl_reply (reply_no, board_no, reply, replyer)
+values(reply_seq.nextval, 122, '122번의 댓글입니다', 'user01');
+insert into tbl_reply (reply_no, board_no, reply, replyer)
+values(reply_seq.nextval, 121, '121번의 댓글입니다', 'user01');
+insert into tbl_reply (reply_no, board_no, reply, replyer)
+values(reply_seq.nextval, 120, '120번의 댓글입니다', 'user01');
+
+select *
+from   tbl_reply;
+--0804
 SELECT ta.*
 FROM (
     SELECT rownum rn, b.*
@@ -42,7 +69,7 @@ select *
 from   tbl_member;
 
 insert into tbl_member (member_id, member_pw, member_name, responsibility)
-values('guest3', '1111', '삼관리', 'Admin');
+values('guest01', '1111', '일관리', 'Admin');
 
 -- 0731
 select   member_name, b.*

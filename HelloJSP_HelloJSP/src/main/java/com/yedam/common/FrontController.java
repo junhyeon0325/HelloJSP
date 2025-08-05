@@ -21,6 +21,7 @@ import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.ModifyFormControl;
 import com.yedam.control.RegisterControl;
+import com.yedam.control.ReplyListControl;
 import com.yedam.control.SignFormControl;
 import com.yedam.control.SignUpControl;
 
@@ -58,6 +59,9 @@ public class FrontController extends HttpServlet{
 		
 		// 기타
 		map.put("/js.do", new JSControl());		// 자바스크립트 연습
+		
+		// 댓글관련.
+		map.put("/replyList.do", new ReplyListControl()); // 글번호 -> 댓글목록.
 	}
 	
 	@Override

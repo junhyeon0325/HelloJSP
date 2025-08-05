@@ -8,13 +8,13 @@
 </head>
 <body>
 	<h3>JS연습</h3>
-	<div>
+	<div  style="display: none;">
 		ID: <input type="text" id="mid"><br>
 		Name: <input type="text" id="mname"><br>
 		Point: <input type="number" id="point"><br>
 		<button id="addBtn">추가</button>
 	</div>
-	<div>
+	<div  style="display: none;">
 		<ul id="list"></ul>
 	</div>
 	
@@ -35,6 +35,35 @@
 			</tbody>
 		</table>
 	</div>
-	<script type="text/javascript" src='js/string.js'></script>
+	
+	<!-- 20250805 0923 -->
+	<div id='show'>
+		<table border="2">
+		  <thead>
+		    <tr>
+		      <th>ID</th>
+		      <th>FName</th>
+		      <th>LName</th>
+		      <th>salary</th>
+		      <th>삭제</th>
+		    </tr>
+		  </thead>
+		  <tbody></tbody>
+		</table>
+	</div>
+	
+	<!-- 20250805 0923 -->
+	<div id='item' style="display: none;">
+		<table border="2">
+		  <thead>
+		    <tr>
+		      <th>이름</th><th>점수</th>
+		    </tr>
+		  </thead>
+		  <tbody></tbody>
+		</table>
+	</div>
+	
+	<script type="text/javascript" src='js/ajax2.js'></script>
 </body>
 </html>
