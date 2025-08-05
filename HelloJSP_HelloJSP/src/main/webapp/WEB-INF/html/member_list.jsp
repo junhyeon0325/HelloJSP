@@ -36,7 +36,7 @@
 		<c:forEach var="member" items="${member_list }">
 			<%-- board_list에서 board값을 가져오는거 --%>
 			<tr>
-				<td><c:out value="${member.memberId}" /></td>
+				<td><a href='member.do?mid=${member.memberId }&page=${paging.currPage }'>${member.memberId }</a></td>
 				<td><c:out value="${member.memberName}" /></td>
 			</tr>
 		</c:forEach>

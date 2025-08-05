@@ -1,3 +1,8 @@
+--0806
+select *
+from   tbl_member
+where  member_id = 'user01';
+
 --0805
 -- 댓글테이블(댓글번호, 원본글번호, 내용, 댓글작성자, 작성일시)
 create table tbl_reply (

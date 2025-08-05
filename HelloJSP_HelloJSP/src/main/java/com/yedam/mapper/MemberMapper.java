@@ -12,4 +12,5 @@ public interface MemberMapper {
 	public MemberVO selectMember(@Param("id") String id, @Param("pw") String pw);	// 조회
 	public List<MemberVO> selectMemberList(SearchDTO search);	// 조회
 	public int selectMemberCount(SearchDTO search);
+	public MemberVO selectSearchMember(String mid);
 }

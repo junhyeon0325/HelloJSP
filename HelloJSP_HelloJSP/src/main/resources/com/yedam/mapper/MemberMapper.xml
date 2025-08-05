@@ -63,6 +63,13 @@
 				member_name like '%'||#{keyword}||'%' or member_id like '%'||#{keyword}||'%'
 			</if>
 		</where>
-	</select>
+  </select>
+  
+  <!-- 회원상세조회 -->
+  <select id="selectSearchMember" parameterType="String" resultType="member">
+    select *
+    from   tbl_member
+    where  member_id = #{memberId}
+  </select>
   
 </mapper>

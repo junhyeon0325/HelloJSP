@@ -4,11 +4,11 @@
  */
 fetch('js/MOCK_DATA.json') // Promise 객체
 	.then(function(result){
-		console.log(result);	// 응답정보(body)
+		//console.log(result);	// 응답정보(body)
 		return result.json();	// promise 객체.
 	})
 	.then(function(result){		// then안에 정의된 function(result)함수이다
-		console.log(result);
+		//console.log(result);
 		result.forEach(elem => {
 			let tr = document.createElement('tr');
 			['id', 'first_name', 'last_name', 'salary'].forEach(field => {

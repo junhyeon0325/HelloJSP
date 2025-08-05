@@ -11,4 +11,5 @@ public interface MemberService {
 	public MemberVO userCheck(String id, String pw);// 회원확인
 	public List<MemberVO> memberList(SearchDTO search);					// 회원조회
 	public int totalCount(SearchDTO search);	// 회원 전체인원
+	public MemberVO searchMember(String mid);	// 회원조회
 }

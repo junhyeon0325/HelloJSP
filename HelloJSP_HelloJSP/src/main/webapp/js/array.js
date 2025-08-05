@@ -4,11 +4,12 @@
  * document.querySelectorAll() 결과에 사용.
  */
 
-members.forEach((elem, idx, ary) => {
+
+/*members.forEach ((elem, idx, ary) => {
 	if (idx == ary.length - 1) {
 		console.log(elem);
 	}
-});
+});*/
 
 
 let sum = 0;

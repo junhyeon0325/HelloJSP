@@ -38,5 +38,12 @@ public class MemberServiceImpl implements MemberService{
 	public int totalCount(SearchDTO search) {
 		return mapper.selectMemberCount(search);
 	}
+
+	// 회원상세조회
+	@Override
+	public MemberVO searchMember(String mid) {
+		MemberVO member = mapper.selectSearchMember(mid);
+		return member;
+	}
 	
 }

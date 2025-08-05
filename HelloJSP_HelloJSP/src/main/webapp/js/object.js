@@ -36,9 +36,9 @@ for (let member of members) {
 	let btn = document.createElement('button');
 	// 이벤트&이벤트핸들러
 	btn.addEventListener('click', (e) => {
-		console.dir(e.target.parentElement.parentElement);
+		//console.dir(e.target.parentElement.parentElement);
 		let parent = e.target.parentElement.parentElement;
-		console.log(parent.children);
+		//console.log(parent.children);
 		let fn = parent.children[1].innerText;
 		let ln = parent.children[2].innerText;
 		
