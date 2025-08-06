@@ -56,9 +56,70 @@
 </table>
 </form>
 
-<!-- 댓글 -->
+<!-- 댓글 start -->
+<style>
+	ul {list-style-type: none;}
+	span {display: inline-block;}
+</style>
+<style>
+.pagination {
+  display: inline-block;
+}
 
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
 
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
 
-
-<script srt="js/board.js"></script>
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+</style>
+<div class="container reply">
+	<!-- 댓글등록 -->
+	<div class="header">
+		<input class="col-sm-8" type="text" id="reply">
+		<button class="btn btn-secondary" id="addReply">댓글등록</button>	<!-- id값은 addReply하나밖에 없다는 의미 -->
+	</div>
+	<!-- 댓글목록 -->
+	<div class="content">
+		<ul>
+			<li>
+				<span class="col-sm-2">글번호</span>
+				<span class="col-sm-5">내용</span>
+				<span class="col-sm-2">작성자</span>
+				<span class="col-sm-2">삭제</span>
+			</li>
+			<li><hr /></li>			
+		</ul>
+	</div>
+	<!-- 댓글페이징 -->
+	<div class="footer">
+		<div class="pagination">
+		  <a href="#">&laquo;</a>
+		  <a href="#">1</a>
+		  <a href="#" class="active">2</a>
+		  <a href="#">3</a>
+		  <a href="#">4</a>
+		  <a href="#">5</a>
+		  <a href="#">6</a>
+		  <a href="#">&raquo;</a>
+		</div>
+	</div>
+</div>
+<!-- 댓글 end. -->
+<script>
+  const bno = "${board_info.boardNo }";
+  const logId = "${logId}";
+</script>
+<script src="js/boardService.js"></script>
+<script src="js/board.js"></script>

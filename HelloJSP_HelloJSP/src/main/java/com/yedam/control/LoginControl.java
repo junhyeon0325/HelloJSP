@@ -26,7 +26,8 @@ public class LoginControl implements Control {
 		
 		// 페이지이동
 		if(member == null) {
-			
+			resp.sendRedirect("loginForm.do?error=1");
+			return;
 		} else {
 			// 정상 id, pw 입력
 			HttpSession session = req.getSession();	// 쿠키정보를 확인해서 웹 브라우저를 통해서 했구나, 

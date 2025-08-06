@@ -3,6 +3,19 @@ select *
 from   tbl_member
 where  member_id = 'user01';
 
+select *
+from   tbl_reply;
+
+select reply_seq.nextval from dual;
+
+-- 댓글을 5개씩 출력.
+select b.*
+from  (select /*+ INDEX_DESC(r PK_REPLY) */ r.*, rownum rn
+       from tbl_reply r
+       where r.board_no = :bno) b
+where  b.rn > (:page - 1) * 5
+and    b.rn <= (:page * 5);
+
 --0805
 -- 댓글테이블(댓글번호, 원본글번호, 내용, 댓글작성자, 작성일시)
 create table tbl_reply (

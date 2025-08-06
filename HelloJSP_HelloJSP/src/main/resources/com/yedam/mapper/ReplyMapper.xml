@@ -3,11 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.ReplyMapper">
-
+	
 	<select id="replyList" parameterType="int" resultType="com.yedam.vo.ReplyVO">
-		select *
-		from   tbl_reply
-		where  board_no = #{boardNo}
+ 	select b.*
+ 	from  (select /*+INDEX_DESC(r PK_REPLY) */ r.*, rownum rn
+ 	       from   tbl_reply r
+ 	       where  r.board_no = #{boardNo}) b
+	where  b.rn > (#{page} - 1) * 5
+	<![CDATA[
+ 	and    b.rn <= (#{page} * 5)
+ 	]]>
 	</select>
+	
+	<delete id="deleteReply" parameterType="int">
+		delete from tbl_reply
+		where reply_no = #{replyNo}
+	</delete>
+	
+	<insert id="insertReply" parameterType="com.yedam.vo.ReplyVO">	<!-- insert delete는 반환값이 int라서 건수라서 resultType 안써도됨 -->
+		<selectKey keyProperty="replyNo" resultType="int" order="BEFORE">	<!-- 어떤 replyNo속성에 매칭시킬건지 / before selectkey값을 이용해서 replyno속성에 담아두고 아래꺼를 실행하기전에 before 그 값을 -->
+			select reply_seq.nextval from dual	<!-- 이거는 다음 시퀀스 값을 계속 가져오는거임 -->
+		</selectKey>	<!-- 키값을 조회하는 가져오는 태그 -->
+		
+		insert into tbl_reply (reply_no, board_no, reply, replyer)
+		values(#{replyNo}, #{boardNo}, #{reply}, #{replyer})
+	</insert>
   
 </mapper>
