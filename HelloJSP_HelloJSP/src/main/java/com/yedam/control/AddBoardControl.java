@@ -49,7 +49,7 @@ public class AddBoardControl implements Control {
 		param.setImage(img);
 
 		BoardService svc = new BoardServiceImpl();
-		if (svc.registerBoard(param)) {
+		if (svc.registerBoard(param)) {	
 			// 목록이동
 			resp.sendRedirect("boardList.do");
 		} else {
