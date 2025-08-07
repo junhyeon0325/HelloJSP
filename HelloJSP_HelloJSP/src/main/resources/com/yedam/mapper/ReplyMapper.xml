@@ -42,7 +42,7 @@
 	
 	<insert id="insertEvent" parameterType="com.yedam.vo.EventVO">
 	  insert into tbl_event (title, start_date, end_date)
-	  values(${title}, ${startDate}, ${endDate})
+	  values(#{title}, #{startDate}, #{endDate})
 	</insert>
 	
 	<delete id="deleteEvent" parameterType="com.yedam.vo.EventVO">
