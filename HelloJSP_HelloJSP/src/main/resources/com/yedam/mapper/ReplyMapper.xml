@@ -28,5 +28,26 @@
 		insert into tbl_reply (reply_no, board_no, reply, replyer)
 		values(#{replyNo}, #{boardNo}, #{reply}, #{replyer})
 	</insert>
+	
+	<select id="selectCount" parameterType="int">
+		select   count(1)
+		from     tbl_reply
+		where    board_no in ${boardNo}
+	</select>
+	
+	<select id="eventList" resultType="com.yedam.vo.EventVO">
+		select title, start_date as "start", end_date as "end"
+		from   tbl_event
+	</select>
+	
+	<insert id="insertEvent" parameterType="com.yedam.vo.EventVO">
+	  insert into tbl_event (title, start_date, end_date)
+	  values(${title}, ${startDate}, ${endDate})
+	</insert>
+	
+	<delete id="deleteEvent" parameterType="com.yedam.vo.EventVO">
+	  delete from tbl_event
+	  where title = #{title}
+	</delete>
   
 </mapper>

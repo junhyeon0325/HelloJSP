@@ -14,6 +14,8 @@ import com.yedam.control.AddBoardControl;
 import com.yedam.control.AddReplyControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.ChartControl;
+import com.yedam.control.EventControl;
 import com.yedam.control.JSControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
@@ -27,6 +29,7 @@ import com.yedam.control.RemoveReplyControl;
 import com.yedam.control.ReplyListControl;
 import com.yedam.control.SignFormControl;
 import com.yedam.control.SignUpControl;
+import com.yedam.control.TotalCntControl;
 
 // init - service - detory
 // *.do 로 끝나는 패턴은 다 현재파일 서블릿을 실행되도록 -> 실행할 컨트롤.(조금있다가 컨트롤이라고 쓴이유에대해서)
@@ -45,15 +48,15 @@ public class FrontController extends HttpServlet{
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		
-		map.put("/boardList.do", new BoardListControl());	// 글목록
-		map.put("/board.do", new BoardControl());	// 상세화면
-		map.put("/register.do", new RegisterControl());	// 등록화면
-		map.put("/addBoard.do", new AddBoardControl());	// 등록처리
-		map.put("/modifyForm.do", new ModifyFormControl());	// 수정화면
-		map.put("/modifyBoard.do", new ModifyBoardControl()); // 수정처리
+		map.put("/boardList.do", new BoardListControl());		// 글목록
+		map.put("/board.do", new BoardControl());				// 상세화면
+		map.put("/register.do", new RegisterControl());			// 등록화면
+		map.put("/addBoard.do", new AddBoardControl());			// 등록처리
+		map.put("/modifyForm.do", new ModifyFormControl());		// 수정화면
+		map.put("/modifyBoard.do", new ModifyBoardControl()); 	// 수정처리
 		
 		// 회원관련
-		map.put("/signForm.do", new SignFormControl());	// 회원가입화면
+		map.put("/signForm.do", new SignFormControl());		// 회원가입화면
 		map.put("/signup.do", new SignUpControl());	// 회원가입처리
 		map.put("/loginForm.do", new LoginFormControl());	// 로그인 화면
 		map.put("/login.do", new LoginControl());	// 로그인 처리
@@ -65,9 +68,16 @@ public class FrontController extends HttpServlet{
 		map.put("/js.do", new JSControl());		// 자바스크립트 연습
 		
 		// 댓글관련.
-		map.put("/replyList.do", new ReplyListControl()); // 글번호 -> 댓글목록.
+		map.put("/replyList.do", new ReplyListControl()); 	// 글번호 -> 댓글목록.
 		map.put("/removeReply.do", new RemoveReplyControl());	// 댓글삭제
 		map.put("/addReply.do", new AddReplyControl());		// 글등록
+		map.put("/totalReply.do", new TotalCntControl());	// 글등록. bno(파라미터이름) {"totalCnt" : 78}
+		
+		// 기타
+		map.put("/chartData.do", new ChartControl());
+
+		// fullcalender 목록.
+		map.put("/eventList.do", new EventControl());	// 이벤트목록.
 	}
 	
 	@Override

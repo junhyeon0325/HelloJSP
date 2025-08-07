@@ -1,4 +1,53 @@
---0806
+-- 0807
+-- 데이터 삭제
+delete from tbl_event
+where title = 'meeting';
+
+-- 데이터 조회 다
+select *
+from   tbl_event;
+select title,
+       start_date as "start",
+       end_date as "end"
+from   tbl_event;
+
+-- 데이터 조회 원하는 제목만
+select *
+from   tbl_event
+where  title = 'meeting';
+
+-- 데이터 작성
+insert into tbl_event (title, start_date, end_date)
+values('meeting', '2023-01-16', '2023-01-19');
+insert into tbl_event (title, start_date, end_date)
+values('출장', '2023-01-17', '2023-01-20');
+insert into tbl_event (title, start_date, end_date)
+values('dinner', '2023-01-20T18:00:00', '2023-01-20T20:00:00');
+insert into tbl_event (title, start_date, end_date)
+values('시험', '2023-01-23T12:00:00', '2023-01-23T18:00:00');
+
+-- 새로운 테이블 작성
+create table tbl_event (
+  title      varchar2(100) not null,
+  start_date varchar2(20) not null,
+  end_date   varchar2(20)
+);
+
+-- 댓글번호의 댓글건수 조회
+select   board_no, count(1)
+from     tbl_reply
+where    board_no in (123, 122)
+group by board_no;
+
+-- 댓글추가
+insert into tbl_reply (reply_no, board_no, reply, replyer)
+values(reply_seq.nextval, 122, '122번의 댓글입니다', 'user01');
+
+select *
+from   tbl_reply;
+
+
+-- 0806
 select *
 from   tbl_member
 where  member_id = 'user01';
