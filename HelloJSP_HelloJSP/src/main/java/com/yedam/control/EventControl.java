@@ -23,12 +23,9 @@ public class EventControl implements Control {
 		ReplyService svc = new ReplyServiceImpl();
 		List<EventVO> list = svc.eventList();
 		
-		Gson gson = new GsonBuilder().create();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
 		
 		resp.getWriter().print(json);
-		
-
 	}
-
 }

@@ -57,21 +57,21 @@ public class FrontController extends HttpServlet{
 		
 		// 회원관련
 		map.put("/signForm.do", new SignFormControl());		// 회원가입화면
-		map.put("/signup.do", new SignUpControl());	// 회원가입처리
+		map.put("/signup.do", new SignUpControl());	   		// 회원가입처리
 		map.put("/loginForm.do", new LoginFormControl());	// 로그인 화면
-		map.put("/login.do", new LoginControl());	// 로그인 처리
-		map.put("/logout.do", new LogoutControl());	// 로그아웃.
+		map.put("/login.do", new LoginControl());			// 로그인 처리
+		map.put("/logout.do", new LogoutControl());			// 로그아웃.
 		map.put("/memberList.do", new MemberListControl());	// admin 회원목록
-		map.put("/member.do", new MemberControl()); // admin 회원상세화면
+		map.put("/member.do", new MemberControl());			// admin 회원상세화면
 		
 		// 기타
 		map.put("/js.do", new JSControl());		// 자바스크립트 연습
 		
 		// 댓글관련.
-		map.put("/replyList.do", new ReplyListControl()); 	// 글번호 -> 댓글목록.
+		map.put("/replyList.do", new ReplyListControl()); 		// 글번호 -> 댓글목록.
 		map.put("/removeReply.do", new RemoveReplyControl());	// 댓글삭제
-		map.put("/addReply.do", new AddReplyControl());		// 글등록
-		map.put("/totalReply.do", new TotalCntControl());	// 글등록. bno(파라미터이름) {"totalCnt" : 78}
+		map.put("/addReply.do", new AddReplyControl());			// 글등록
+		map.put("/totalReply.do", new TotalCntControl());		// 글등록. bno(파라미터이름) {"totalCnt" : 78}
 		
 		// 기타
 		map.put("/chartData.do", new ChartControl());

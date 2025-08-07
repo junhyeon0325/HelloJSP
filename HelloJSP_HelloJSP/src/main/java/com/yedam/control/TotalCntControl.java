@@ -27,7 +27,7 @@ public class TotalCntControl implements Control {
 		ReplyService rs = new ReplyServiceImpl();
 		
 		int cnt = rs.replyCount(Integer.parseInt(bno));
-		map.put("totalCnt", cnt);			
+		map.put("totalCnt", cnt);
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(map);	// 자바객체 -> json문자열.

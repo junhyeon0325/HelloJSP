@@ -1,11 +1,17 @@
 -- 0807
+-- 데이터 삭제(댓글)
+delete from tbl_reply
+where reply_no > 192;
+
 -- 데이터 삭제
 delete from tbl_event
-where title = 'meeting';
+where title = '출장';
 
 -- 데이터 조회 다
 select *
 from   tbl_event;
+
+-- alias이용해서 start_date를 start로 바꿈
 select title,
        start_date as "start",
        end_date as "end"
@@ -18,13 +24,15 @@ where  title = 'meeting';
 
 -- 데이터 작성
 insert into tbl_event (title, start_date, end_date)
-values('meeting', '2023-01-16', '2023-01-19');
+values('meeting', '2025-01-16', '2025-01-19');
 insert into tbl_event (title, start_date, end_date)
-values('출장', '2023-01-17', '2023-01-20');
+values('출장', '2025-01-17', '2025-01-20');
 insert into tbl_event (title, start_date, end_date)
-values('dinner', '2023-01-20T18:00:00', '2023-01-20T20:00:00');
+values('dinner', '2025-01-20T18:00:00', '2025-01-20T20:00:00');
 insert into tbl_event (title, start_date, end_date)
-values('시험', '2023-01-23T12:00:00', '2023-01-23T18:00:00');
+values('시험', '2025-01-23T12:00:00', '2025-01-23T18:00:00');
+insert into tbl_event (title, start_date)
+values('여행', '2025-01-08');
 
 -- 새로운 테이블 작성
 create table tbl_event (
@@ -36,16 +44,24 @@ create table tbl_event (
 -- 댓글번호의 댓글건수 조회
 select   board_no, count(1)
 from     tbl_reply
-where    board_no in (123, 122)
+where    board_no in (121)
 group by board_no;
+
+-- 댓글추가
+insert into tbl_reply (reply_no, board_no, reply, replyer)
+select reply_seq.nextval,
+       board_no,
+       reply, 
+       replyer
+from   tbl_reply;
 
 -- 댓글추가
 insert into tbl_reply (reply_no, board_no, reply, replyer)
 values(reply_seq.nextval, 122, '122번의 댓글입니다', 'user01');
 
-select *
-from   tbl_reply;
-
+select   *
+from     tbl_reply
+order by reply_no;
 
 -- 0806
 select *
