@@ -52,8 +52,8 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public boolean addEvent(String title, String startDate, String endDate) {
-		int r = mapper.insertEvent(title, startDate, endDate);
+	public boolean addEvent(EventVO evo) {
+		int r = mapper.insertEvent(evo);
 		if( r > 0 ) {
 			sqlSession.commit();
 			return true;
@@ -62,8 +62,8 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public boolean removeEvent(String title) {
-		int r = mapper.deleteEvent(title);
+	public boolean removeEvent(EventVO evo) {
+		int r = mapper.deleteEvent(evo);
 		if( r > 0 ) {
 			sqlSession.commit();
 			return true;

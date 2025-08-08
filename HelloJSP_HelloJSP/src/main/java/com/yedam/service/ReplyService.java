@@ -13,6 +13,6 @@ public interface ReplyService {
 	
 	// 목록, 추가, 삭제
 	List<EventVO> eventList();	// 목록
-	boolean addEvent(String title, String startDate, String endDate);	// 등록
-	boolean removeEvent(String title);	// 삭제
+	boolean addEvent(EventVO evo);	// 등록
+	boolean removeEvent(EventVO evo);	// 삭제
 }

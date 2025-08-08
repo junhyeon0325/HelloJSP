@@ -15,6 +15,6 @@ public interface ReplyMapper {
 	
 	// fullcalendar 목록, 추가, 삭제 -> mapper.xml에 추가
 	List<EventVO> eventList();	// 목록
-	int insertEvent(String title, String startDate, String endDate);	// 등록
-	int deleteEvent(String title);	// 삭제
+	int insertEvent(EventVO evo);	// 등록
+	int deleteEvent(EventVO evo);	// 삭제
 }

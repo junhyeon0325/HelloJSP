@@ -98,9 +98,13 @@ document.querySelector('#addReply').addEventListener('click', function(e) {
 	svc.registerReply({ bno, reply, replyer: logId },
 		result => {
 			if (result.retCode == 'OK') {
-				let r = result.retVal;
-				let li = makeRow(r);
-				document.querySelector('div.content>ul').appendChild(li);
+				page = 1;
+				showReplyList();
+				document.querySelector('#reply').value = '';	// 댓글 입력하고 빈칸으로
+				
+				//let r = result.retVal;
+				//let li = makeRow(r);
+				//document.querySelector('div.content>ul').appendChild(li);
 			} else if (result.retCode == 'NG') {
 				alert('처리중 예외발생.')
 			} else {
