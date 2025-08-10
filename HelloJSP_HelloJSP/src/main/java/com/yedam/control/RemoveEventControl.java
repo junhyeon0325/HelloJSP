@@ -31,7 +31,7 @@ public class RemoveEventControl implements Control {
 		
 		if(svc.removeEvent(evo)) {
 			map.put("retCode", "OK");
-			map.put("qnpfr", evo);
+			map.put("retVal", evo);
 		} else {
 			map.put("retCode", "NG");
 		}

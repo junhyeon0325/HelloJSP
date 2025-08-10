@@ -27,7 +27,7 @@
 	</div>
 
 	<script src="./js/openapi.js"></script>
-	<script type="text/javascript">
-	</script>
+	<!-- <script type="text/javascript">
+	</script> --> 
 </body>
 </html>

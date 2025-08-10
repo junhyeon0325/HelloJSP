@@ -15,15 +15,18 @@ import com.yedam.service.ReplyService;
 import com.yedam.service.ReplyServiceImpl;
 import com.yedam.vo.EventVO;
 
+// 이벤트 등록, fullcalenda에 일정 등록
 public class AddEventControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/json;charset=utf-8");
 		
+		// 파라미터 받기
 		String title = req.getParameter("title");
 		String start = req.getParameter("start");
 		String end = req.getParameter("end");
 		
+		// 파라미터로 받은 데이터드을 EventVO객체 만들어서 evo에 대입
 		EventVO evo = new EventVO();
 		evo.setTitle(title);
 		evo.setStart(start);
@@ -34,11 +37,12 @@ public class AddEventControl implements Control {
 		
 		if(svc.addEvent(evo)) {
 			map.put("retCode", "OK");
-			map.put("qnpfr", evo);
+			map.put("retVal", evo);
 		} else {
 			map.put("retCode", "NG");
 		}
-		/*	map.put("title", '''') 
+		
+		/*	map.put("title", '''') // 이런방법도 있으시다고 하셨음
 		try {
 			svc.addEvent(map);
 			resp.getWriter().print("{\"retCode\":\"OK\"}");

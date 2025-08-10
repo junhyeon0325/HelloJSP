@@ -5,83 +5,95 @@
 <script src='./dist/index.global.js'></script>
 <script>
 
-  document.addEventListener('DOMContentLoaded', function() {	// DOMContentLoaded이벤트가 발생하면 함수가 실행 / 컨텐츠가 다 로딩되고나면 이런뜻
+document.addEventListener('DOMContentLoaded', function() {	// DOMContentLoaded이벤트가 발생하면 함수가 실행 / 컨텐츠가 다 로딩되고나면 이런뜻
 	
-	// 값을 담을 변수 선언.  
-	let eventList = [{
-		title:"test",
-		start:"2023-01-04"
-	}];
-  
-  	// ajax실행.
-  	fetch('eventList.do')
-  	  .then(resolve => resolve.json())
-  	  .then(result => {
-  		  eventList = result;
-  		  console.log(eventList);
-  	  
-	  
-    var calendarEl = document.getElementById('calendar');	
-    var calendar = new FullCalendar.Calendar(calendarEl, {	// calendarEl 은 캘린더틀을 만들고 뒤에는 옵션 객체를 불러옴 key:value
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      initialDate: '2025-01-12',
-      navLinks: true, // can click day/week names to navigate views
-      selectable: true,
-      selectMirror: true,
-      select: function(arg) {	// 추가할때는 select실행, 객체안에 속해있는 함수 > 메소드
-    	  console.log(arg);		// title, startStr, endStr / arg를 찍어보니까 
-        var title = prompt('일정을 등록하세요!');
-        if (title) {
-        	fetch('addEvent.do?title='+title+'&start='+arg.startStr+'&end='+arg.endStr)
-        	  .then(resolve => resolve.json())
-        	  .then(result => {
-        		  console.log(result);
-        		  if(result.retCode == 'OK'){        			  
-          			calendar.addEvent({	// 화면에 그려주는 기능
-            			title: title,
-            			start: arg.start,
-            			end: arg.end,
-            			allDay: arg.allDay
-         		 		})        		  
-        			 } else if (result.retCode == 'NG'){
-        				 alert('에러가 발생.');
-        			 } else {
-        				 alert('알수 없는 예외.');
-        		 	}
-        	   })
-        	   .catch(err => console.error(err));
-        }
-        calendar.unselect()
-      },
-      eventClick: function(arg) {	// 삭세할때는 eventClick실행
-    	  console.log(arg); // title=>arg.event.title
-        if (confirm('Are you sure you want to delete this event?')) {
-    		fetch('removeEvent.do?title='+arg.event.title)
-    	 		.then(resolve => resolve.json())
-    	  		.then(result => {
-    	  			if (result.retCode == 'OK')
-					arg.event.remove()		// 화면에 있는 데이터들을 지워주는 기능
-					else if (result.retCode == 'NG')
-						alert('삭제 실패')
-					else
-						alert('알수없는 에러코드')
-    	  		})
-    	  		.catch(err => console.error(err));
-        }
-      },
-      editable: true,
-      dayMaxEvents: true, // allow "more" link when too many events
-      events: eventList	// 여기에다가 eventList를 넣음
-    });
-
+  // 값을 담을 변수 선언.  
+  let eventList = [{
+  	title:"test",
+  	start:"2023-01-04"
+  }];
+ 
+  // ajax실행.
+  fetch('eventList.do')
+    .then(resolve => resolve.json())
+    .then(result => {
+      eventList = result;
+      console.log(eventList);
+     
+      var calendarEl = document.getElementById('calendar');	
+      
+      // 캘린더틀 만들고 옵션 객체 부르기
+      var calendar = new FullCalendar.Calendar(calendarEl, {	// calendarEl 은 캘린더틀을 만들고 뒤에는 옵션 객체를 불러옴 key:value
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        initialDate: '2025-01-12',
+        navLinks: true, // can click day/week names to navigate views
+        selectable: true,
+        selectMirror: true,
+        
+        // 일정 추가 함수 시작
+        select: function(arg) {	// 추가할때는 select실행, 객체안에 속해있는 함수 > 메소드
+   	      console.log(arg);		// title, startStr, endStr / arg를 찍어보니까 
+          var title = prompt('일정을 등록하세요!');
+   	      
+   	      // prompt에 입력한 값이 true인경우
+          if (title) {	// title에 값이 있으면 true로 실행, 없거나 null undefined이면 false로 실행
+       	    fetch('addEvent.do?title='+title+'&start='+arg.startStr+'&end='+arg.endStr)
+       	      .then(resolve => resolve.json())
+       	      .then(result => {
+       		    console.log(result);
+       		    if(result.retCode == 'OK'){        			  
+         		  calendar.addEvent({	// 화면에 그려주는 기능
+           		  title: title,
+           		  start: arg.start,
+           		  end: arg.end,
+           		  allDay: arg.allDay
+        		  })        		  
+       		    } else if (result.retCode == 'NG'){
+       		      alert('에러가 발생.');
+       			} else {
+       			  alert('알수 없는 예외.');
+       		 	}
+       	      })
+       	      .catch(err => console.error(err));
+          }  // end of if
+          
+          calendar.unselect()  // 일정 드래그해서 하이라이트 된 상태로 만들고 나서 캘린더로 나왔을때 일정드래그한 부분이 그대로 남아있음 그걸 없애주는
+        },  // end of function
+        
+        // 삭제함수
+        eventClick: function(arg) {	// 삭제할때는 eventClick실행
+   	      console.log(arg); // title => arg.event.title
+   	      
+          if (confirm('Are you sure you want to delete this event?')) {
+   		    fetch('removeEvent.do?title='+arg.event.title)
+   	 		  .then(resolve => resolve.json())
+   	  		  .then(result => {
+   	  		    if (result.retCode == 'OK')
+				  arg.event.remove()		// 화면에 있는 데이터들을 지워주는 기능
+				else if (result.retCode == 'NG')
+				  alert('삭제 실패')
+				else
+				  alert('알수없는 에러코드')
+   	  		  })
+   	  		  .catch(err => console.error(err));
+          } // end of if
+          
+        }, // end of eventClick: function(arg)
+        
+        editable: true,
+        dayMaxEvents: true, // allow "more" link when too many events
+        events: eventList	// 여기에다가 eventList를 넣음
+      }); // end of .calendar
+      
     calendar.render();	// render함수를 통해서 만드는 것 같다.
-  	})
-	  .catch(err => console.error(err));
-  });
+  })  // end of .then function
+  
+  .catch(err => console.error(err));
+}); // end of addEventListener
 
 </script>
 <style>
