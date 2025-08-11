@@ -33,7 +33,7 @@ public class MemberListControl implements Control {
 
 		MemberService svc = new MemberServiceImpl();
 		List<MemberVO> list = svc.memberList(search);
-		
+		System.out.println(list);
 		int totlaCnt = svc.totalCount(search);
 		PageDTO paging = new PageDTO(Integer.parseInt(page), totlaCnt);
 
