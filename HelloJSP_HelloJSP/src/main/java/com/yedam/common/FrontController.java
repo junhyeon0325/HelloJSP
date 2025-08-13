@@ -56,6 +56,9 @@ public class FrontController extends HttpServlet{
 		
 		// member브랜치 수정2
 		map.put("/boardList.do", new BoardListControl());		// 글목록
+		// member브랜치 수정3
+		map.put("/boardList.do", new BoardListControl());		// 글목록
+		
 		
 		map.put("/boardList.do", new BoardListControl());		// 글목록
 		map.put("/board.do", new BoardControl());				// 상세화면
