@@ -50,6 +50,7 @@ public class FrontController extends HttpServlet{
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		//수정
+		//수정2
 		
 		map.put("/boardList.do", new BoardListControl());		// 글목록
 		map.put("/board.do", new BoardControl());				// 상세화면
