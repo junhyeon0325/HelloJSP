@@ -52,6 +52,10 @@ public class FrontController extends HttpServlet{
 		// member 브랜치 수정
 		map.put("/member.do", new member());		// 글목록
 		
+		// member 브랜치 수정2
+		map.put("/member.do", new member());		// 글목록
+		
+		
 		map.put("/boardList.do", new BoardListControl());		// 글목록
 		map.put("/board.do", new BoardControl());				// 상세화면
 		map.put("/register.do", new RegisterControl());			// 등록화면
